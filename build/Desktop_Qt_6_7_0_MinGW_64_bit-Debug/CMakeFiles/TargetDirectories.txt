@@ -1,0 +1,9 @@
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/untitled.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/untitled_autogen_timestamp_deps.dir
+D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/CMakeFiles/untitled_autogen.dir

@@ -122,7 +122,7 @@ void MainWindow::on_loanType_currentIndexChanged(int index)
 void MainWindow::on_paymentFrequency_currentIndexChanged(int index)
 {
     QString selectedText = ui->paymentFrequency->currentText();
-    qDebug() << "Selected option: " << selectedText;
+    // qDebug() << "Selected option: " << selectedText;
 }
 
 
@@ -178,8 +178,18 @@ void MainWindow::on_btnGetLoan_clicked()
     double payment = selectedLoan->calculateIndividualPayment(amount, term, rate);
 
 
-    AmortizationInterestLoan* amortizedLoan = dynamic_cast<AmortizationInterestLoan*>(selectedLoan);
-    std::vector<PaymentInfo> schedule = amortizedLoan->generatePaymentSchedule(amount, term, payment);
+    std::vector<PaymentInfo> schedule;
+    if (AmortizationInterestLoan* amortizedLoan = dynamic_cast<AmortizationInterestLoan*>(selectedLoan))
+    {
+        schedule = amortizedLoan->generatePaymentSchedule(amount, term, payment);
+
+    }
+    else if (SimpleInterestLoan* simpleLoan = dynamic_cast<SimpleInterestLoan*>(selectedLoan))
+    {
+        schedule = simpleLoan->generatePaymentSchedule(amount, term, payment);
+    }
+
+    // AmortizationInterestLoan* amortizedLoan = dynamic_cast<AmortizationInterestLoan*>(selectedLoan);
     double totalInterest = 0;
     for (const auto& paymentInfo : schedule)
     {

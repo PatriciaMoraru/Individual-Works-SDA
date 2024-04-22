@@ -83,6 +83,14 @@ LoanDetails::LoanDetails(QWidget *parent, double amount, double interestRate, in
     chart->addSeries(cumulativePrincipal);
     chart->createDefaultAxes();
     chart->setVisible(true);
+    QValueAxis *axisX = qobject_cast<QValueAxis *>(chart->axisX());
+    QValueAxis *axisY = qobject_cast<QValueAxis *>(chart->axisY());
+    if (axisX) {
+        axisX->setTitleText("Number of payments");
+    }
+    if (axisY) {
+        axisY->setTitleText("MDL");
+    }
     chart->setTitle(QString("Cumulative Principal"));
 
     QChartView *chartView = new QChartView(chart);
@@ -95,6 +103,14 @@ LoanDetails::LoanDetails(QWidget *parent, double amount, double interestRate, in
     chart1->addSeries(cumulativeInterest);
     chart1->createDefaultAxes();
     chart1->setVisible(true);
+    QValueAxis *axisX1 = qobject_cast<QValueAxis *>(chart1->axisX());
+    QValueAxis *axisY1 = qobject_cast<QValueAxis *>(chart1->axisY());
+    if (axisX1) {
+        axisX1->setTitleText("Number of payments");
+    }
+    if (axisY1) {
+        axisY1->setTitleText("MDL");
+    }
     chart1->setTitle(QString("Cumulative Interest"));
 
     QChartView *chartView1 = new QChartView(chart1);

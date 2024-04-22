@@ -83,6 +83,8 @@ public:
         //I = Mi -  ((Mi - mi) / (Mcs - mcs)) * (CS - mcs)
         const int MinCreditScore = 580; // Minimum possible credit score
         const int MaxCreditScore = 850; // Maximum possible credit score
+
+        // Linear interpolation formula:
         double rate = maximumInterestRate - ((maximumInterestRate - minimumInterestRate) / (MaxCreditScore - MinCreditScore)) * (creditScore - MinCreditScore);
         return rate / 100.0; // Convert percentage to decimal
     }
@@ -112,47 +114,69 @@ public:
 
     double calculateInterest(double principal, int term, double rate) const override
     {
-        int paymentsPerYear = getPaymentsPerYear();
-        int totalPayments = term * paymentsPerYear / 12;
-
-        double ratePerPeriod = rate / paymentsPerYear;
-        double totalInterest = principal * ratePerPeriod * totalPayments;
-
-        return totalInterest;
+        double annualRate = rate;
+        return principal * annualRate * (term / 12.0);
     }
 
     double calculateIndividualPayment(double principal, int term, double rate) const override
     {
         int paymentsPerYear = getPaymentsPerYear();
-        int totalPayments = term * paymentsPerYear / 12;
-
-        double paymentAmount;
-        if (rate > 0)
-        {
-            double ratePerPeriod = rate / paymentsPerYear;
-            paymentAmount = principal * ratePerPeriod / (1 - pow(1 + ratePerPeriod, -totalPayments));
-        }
-        else
-        {
-            paymentAmount = principal / totalPayments;
-        }
-        return paymentAmount;
+        int totalPayments = ceil((double)term * paymentsPerYear / 12.0);
+        double totalInterest = calculateInterest(principal, term, rate);
+        return (principal + totalInterest) / totalPayments;  // Total payment divided evenly
     }
 
     double calculateTotalInterest(double principal, int term) const override
     {
-        double annualRate = calculateRateBasedOnCreditScore();
         int paymentsPerYear = getPaymentsPerYear();
-        int totalPayments = term * paymentsPerYear / 12;
+        int totalPayments = ceil((double)term * paymentsPerYear / 12.0);
+        double annualRate = calculateRateBasedOnCreditScore();
+        double interestPerPeriod = (principal * (annualRate / 100.0)) / paymentsPerYear;
+        double totalInterest = interestPerPeriod * totalPayments;
 
-        double ratePerPeriod = annualRate / paymentsPerYear;
-        double interestPerPeriod = principal * ratePerPeriod;
-        return interestPerPeriod * totalPayments;  // Interesul total pe toata perioada
+        return totalInterest;
     }
+
+    vector<PaymentInfo> generatePaymentSchedule(double principal, int term, int creditScore) const
+    {
+        vector<PaymentInfo> schedule;
+        int paymentsPerYear = getPaymentsPerYear();
+        int totalPayments = ceil((double)term * paymentsPerYear / 12.0);
+
+        double rate = calculateRateBasedOnCreditScore();
+        double totalInterest = calculateInterest(principal, term, rate);
+        double interestPerPayment = totalInterest / totalPayments; // Divide total interest evenly among the payments
+        double principalPerPayment = principal / totalPayments; // Evenly divide the principal amount among the payments
+
+        double remainingBalance = principal;
+
+        for (int i = 0; i < totalPayments; ++i)
+        {
+            PaymentInfo info;
+            info.principalComponent = principalPerPayment;
+            info.interestComponent = interestPerPayment; // Interest component for each payment
+            remainingBalance -= principalPerPayment; // Reduce remaining balance by the principal paid in this period
+
+            if (remainingBalance < 0)
+            {
+                remainingBalance = 0; // Correct negative balance in the last payment
+            }
+
+            info.remainingBalance = remainingBalance;
+            schedule.push_back(info);
+
+            if (remainingBalance <= 0) break; // Exit early if the loan is fully paid
+        }
+
+        return schedule;
+    }
+
+
 };
 
 //Clasa derivata (derived class) pentru loan cu interes amortizat
-class AmortizationInterestLoan : public LoanType {
+class AmortizationInterestLoan : public LoanType
+{
 public:
     AmortizationInterestLoan(const string& name, double minimumAmount, double maximumAmount, int minimumLoanTerm, int maximumLoanTerm, double minimumInterestRate, double maximumInterestRate)
         : LoanType(name, minimumAmount, maximumAmount, minimumLoanTerm, maximumLoanTerm, minimumInterestRate, maximumInterestRate) {}
@@ -228,7 +252,7 @@ public:
             if (remainingBalance <= 0) break;
         }
 
-        cout << "Total Interest Paid: $" << totalInterestPaid << endl;
+
         return schedule;
     }
 };
@@ -290,29 +314,28 @@ public:
 };
 
 
-class VehicleLoan : public AmortizationInterestLoan
+class VehicleLoan : public SimpleInterestLoan
 {
 public:
     VehicleLoan()
-        : AmortizationInterestLoan("Vehicle", 60000, 5e5, 6, 60, 7.9, 21.32)
+        : SimpleInterestLoan("Vehicle", 60000, 5e5, 6, 60, 7.9, 21.32)
     {}
 };
 
-class EducationLoan : public AmortizationInterestLoan
+class EducationLoan : public SimpleInterestLoan
 {
 public:
     EducationLoan()
-        : AmortizationInterestLoan("Education", 20000, 6e5, 6, 60, 6.9, 10.1)
+        : SimpleInterestLoan("Education", 20000, 6e5, 6, 60, 6.9, 10.1)
     {}
 };
 
-class PersonalExpensesLoan : public AmortizationInterestLoan
+class PersonalExpensesLoan : public SimpleInterestLoan
 {
 public:
     PersonalExpensesLoan()
-        : AmortizationInterestLoan("Personal Expenses", 20000, 4e5, 6, 48, 7.9, 38.9)
+        : SimpleInterestLoan("Personal Expenses", 20000, 4e5, 6, 48, 7.9, 38.9)
     {}
 };
-
 
 #endif // LOANS_H

@@ -1,0 +1,26 @@
+# ninja log v5
+2	9573	7355052461977581	untitled_autogen/timestamp	2fb3073de94c9533
+2	9573	7355052461977581	untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+2	9573	7355052461977581	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/timestamp	2fb3073de94c9533
+2	9573	7355052461977581	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+9610	20386	7355052571433296	CMakeFiles/untitled.dir/main.cpp.obj	fb61c1f1c4253e2a
+9574	20453	7355052572121384	CMakeFiles/untitled.dir/untitled_autogen/mocs_compilation.cpp.obj	74aa2fcf18aea88e
+9622	20905	7355052576611821	CMakeFiles/untitled.dir/loandetails.cpp.obj	317241f6e3fb29ef
+9617	21527	7355052582804458	CMakeFiles/untitled.dir/mainwindow.cpp.obj	224281d4006d3bfc
+21528	22255	7355052589953665	untitled.exe	8c0af3280a7be1c7
+24	4042	7355172236271893	untitled_autogen/timestamp	2fb3073de94c9533
+24	4042	7355172236271893	untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+24	4042	7355172236271893	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/timestamp	2fb3073de94c9533
+24	4042	7355172236271893	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+4070	21594	7355172412726575	CMakeFiles/untitled.dir/main.cpp.obj	fb61c1f1c4253e2a
+4042	21597	7355172412736548	CMakeFiles/untitled.dir/untitled_autogen/mocs_compilation.cpp.obj	74aa2fcf18aea88e
+4065	21608	7355172412889187	CMakeFiles/untitled.dir/loandetails.cpp.obj	317241f6e3fb29ef
+4074	21952	7355172416340232	CMakeFiles/untitled.dir/mainwindow.cpp.obj	224281d4006d3bfc
+21953	22703	7355172423796640	untitled.exe	8c0af3280a7be1c7
+49	341	7355176862981547	untitled_autogen/timestamp	2fb3073de94c9533
+49	341	7355176862981547	untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+49	341	7355176862981547	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/timestamp	2fb3073de94c9533
+49	341	7355176862981547	D:/univer/sem2/SDA/Individual-Works-SDA/Qt/untitled/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/untitled_autogen/mocs_compilation.cpp	2fb3073de94c9533
+421	8881	7355176948394338	CMakeFiles/untitled.dir/loandetails.cpp.obj	317241f6e3fb29ef
+388	9669	7355176956265227	CMakeFiles/untitled.dir/mainwindow.cpp.obj	224281d4006d3bfc
+9669	10352	7355176962988750	untitled.exe	8c0af3280a7be1c7
